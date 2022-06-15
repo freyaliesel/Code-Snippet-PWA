@@ -4,6 +4,7 @@ const path = require("path");
 const { InjectManifest } = require("workbox-webpack-plugin");
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
+
 // TODO: Add CSS loaders and babel to webpack.
 
 module.exports = () => {
@@ -20,11 +21,16 @@ module.exports = () => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: "./index.html",
-                title: "Directory",
+                title: "Code Snippet PWA",
             }),
-            new GenerateSW(),
+            new InjectManifest({
+                swSrc: "./src-sw.js",
+                swDest: "src-sw.js",
+            }),
             new WebpackPwaManifest({
                 // TODO: Create a manifest.json:
+                fingerprints: false,
+                inject: true,
                 name: "Code Snippet PWA",
                 short_name: "SnippetPWA",
                 description: "Code snippet creation and recall in a PWA",
@@ -37,6 +43,7 @@ module.exports = () => {
                     {
                         src: path.resolve("src/images/logo.png"),
                         sizes: [96, 128, 192, 256, 384, 512],
+                        destination: path.join('assets', 'icons'),
                     },
                 ],
             }),
