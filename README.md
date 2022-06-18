@@ -17,7 +17,11 @@ This application is intended to be hosted via Heroku.
 
 ## Usage
 
-To be done
+Type into the text editor, text entered will be saved when the editor loses focus.
+
+Click the install button to add the application to your local files
+
+![JATE live site image](./assets/JATE%20live%20screenshot.png)
 
 ## Contact
 
